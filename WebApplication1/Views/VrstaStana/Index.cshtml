@@ -1,0 +1,48 @@
+﻿@model IEnumerable<WebApplication1.Models.VrstaStana>
+
+@{
+    ViewBag.Title = "Vrsta stana";
+}
+
+<h2>Vrste stanova koje su u ponudi</h2>
+<form method="get">
+    <input type="search" name="unetarec" class="form-control" style="display:inline"/>
+    <button type="submit" class="btn btn-primary">Pretrazi</button>
+</form>
+<p>
+    @if (User.Identity.Name == "stefan@gmail.com")
+    {
+        @Html.ActionLink("Kreiraj", "Create", "VrstaStanaController", new { @class = "btn btn-primary" })
+    }
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NazivVrste)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NazivVrste)
+        </td>
+        <td>
+            @if (User.Identity.Name == "stefan@gmail.com")
+            {
+                @Html.ActionLink("Izmeni", "Edit", new { id = item.VrstaStanaID }, new { @class = "btn btn-default" })
+            }
+            @if (User.Identity.Name == "stefan@gmail.com")
+            {
+                @Html.ActionLink("Detalji", "Details", new { id = item.VrstaStanaID }, new { @class = "btn btn-default" })
+            }
+            @if (User.Identity.Name == "stefan@gmail.com")
+            {
+                @Html.ActionLink("Obriši", "Delete", new { id = item.VrstaStanaID }, new { @class = "btn btn-default" })
+            }
+        </td>
+    </tr>
+}
+
+</table>

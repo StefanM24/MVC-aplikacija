@@ -1,0 +1,50 @@
+﻿@model WebApplication1.Models.Iznajmljivanje
+
+@{
+    ViewBag.Title = "Detalji";
+}
+
+<h2>Detalji</h2>
+
+<div>
+    <h4>Iznajmljivanje</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Podstanar.Ime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Podstanar.Ime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Podstanar.Prezime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Podstanar.Prezime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Stan.Adresa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Stan.Adresa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DatumPocetka)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DatumPocetka)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Izmeni", "Edit", new { id = Model.IznajmljivanjeID }, new { @class = "btn btn-primary" }) |
+    @Html.ActionLink("Nazad", "Index", "IznajmljivanjeController", new { @class = "btn btn-default" })
+</p>

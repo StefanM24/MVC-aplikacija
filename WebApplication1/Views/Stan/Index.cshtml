@@ -1,0 +1,107 @@
+﻿@model IEnumerable<WebApplication1.Models.Stan>
+
+@{
+    ViewBag.Title = "Stan";
+}
+
+<h2>Dostupni stanovi za iznajmljivanje</h2>
+
+<p>
+    @if (User.Identity.Name == "stefan@gmail.com")
+    {
+        @Html.ActionLink("Kreiraj", "Create", "StanController", new { @class = "btn btn-primary" })
+    }
+</p>
+
+<br>
+
+<form method="get">
+    Pretraga po adresi<br><br>
+    <input type="search" name="unetarec" class="form-control" style="display:inline" />
+    <button type="submit" class="btn btn-primary">Pretraži</button>
+</form>
+
+<br>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Grad.NazivGrada)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Adresa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VrstaStana.NazivVrste)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kvadratura)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sprat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cena)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vlasnik)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Stanje)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Uknjizen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Namesten)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Grad.NazivGrada)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem=>item.Adresa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VrstaStana.NazivVrste)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kvadratura)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sprat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cena)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vlasnik)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Stanje)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Uknjizen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Namesten)
+        </td>
+        <td>
+            @if (User.Identity.Name == "stefan@gmail.com")
+            {
+                @Html.ActionLink("Izmeni", "Edit", new { id = item.StanID }, new { @class = "btn btn-default" })
+            }
+            @Html.ActionLink("Detalji", "Details", new { id = item.StanID }, new { @class = "btn btn-default" })
+            @if (User.Identity.Name == "stefan@gmail.com")
+            {
+                @Html.ActionLink("Obriši", "Delete", new { id = item.StanID }, new { @class = "btn btn-default" })
+            }
+        </td>
+    </tr>
+}
+
+</table>

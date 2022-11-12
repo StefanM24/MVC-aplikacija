@@ -1,0 +1,51 @@
+﻿@model IEnumerable<WebApplication1.Models.Iznajmljivanje>
+
+@{
+    ViewBag.Title = "Iznajmljivanje";
+}
+
+<h2>Iznajmljeni stanovi</h2>
+
+<p>
+    @Html.ActionLink("Kreiraj", "Create", "IznajmljivanjeController", new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Podstanar.Ime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Stan.Adresa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DatumPocetka)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @{
+                string Ime = item.Podstanar.Ime + " " + item.Podstanar.Prezime;
+
+                @Html.DisplayFor(modelItem => Ime)
+            }
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Stan.Adresa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DatumPocetka)
+        </td>
+        
+        <td>
+            @Html.ActionLink("Izmeni", "Edit", new { id=item.IznajmljivanjeID }, new { @class = "btn btn-default" }) |
+            @Html.ActionLink("Detalji", "Details", new { id=item.IznajmljivanjeID }, new { @class = "btn btn-default" }) |
+            @Html.ActionLink("Obriši", "Delete", new { id=item.IznajmljivanjeID }, new { @class = "btn btn-default" })
+        </td>
+    </tr>
+}
+
+</table>

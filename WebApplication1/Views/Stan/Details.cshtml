@@ -1,0 +1,109 @@
+﻿@model WebApplication1.Models.Stan
+
+@{
+    ViewBag.Title = "Detalji";
+}
+
+<h2>Detalji</h2>
+
+<div>
+    <h4>Stan</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Grad.NazivGrada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Grad.NazivGrada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VrstaStana.NazivVrste)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VrstaStana.NazivVrste)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kvadratura)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kvadratura)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Adresa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Adresa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sprat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sprat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cena)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cena)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Vlasnik)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vlasnik)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Stanje)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Stanje)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Uknjizen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Uknjizen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Namesten)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Namesten)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DodatnaOpremljenost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DodatnaOpremljenost)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @if (User.Identity.Name == "stefan@gmail.com")
+    {
+        @Html.ActionLink("Izmeni", "Edit", new { id = Model.StanID }, new { @class = "btn btn-primary" })
+    }
+    @Html.ActionLink("Nazad", "Index", "StanController", new { @class = "btn btn-default" })
+</p>

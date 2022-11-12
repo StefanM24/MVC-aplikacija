@@ -1,0 +1,55 @@
+﻿@model IPagedList<WebApplication1.Models.Grad>
+
+@using PagedList;
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Grad";
+}
+
+<h2>Gradovi u kojima iznajmljujemo stanove</h2>
+
+<p>
+    @if (User.Identity.Name == "stefan@gmail.com")
+    {
+        @Html.ActionLink("Kreiraj", "Create", "GradController", new { @class = "btn btn-primary" })
+    }
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().NazivGrada)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().PostanskiBroj)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NazivGrada)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PostanskiBroj)
+        </td>
+        <td>
+            @if (User.Identity.Name == "stefan@gmail.com")
+            {
+                @Html.ActionLink("Izmeni", "Edit", new { id = item.GradID }, new { @class = "btn btn-default" })
+            }
+            @if (User.Identity.Name == "stefan@gmail.com")
+            {
+                @Html.ActionLink("Detalji", "Details", new { id = item.GradID }, new { @class = "btn btn-default" })
+            }
+            @if (User.Identity.Name == "stefan@gmail.com")
+            {
+                @Html.ActionLink("Obriši", "Delete", new { id = item.GradID }, new { @class = "btn btn-default" })
+            }
+        </td>
+    </tr>
+}
+</table>
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }), PagedListRenderOptions.Classic)
